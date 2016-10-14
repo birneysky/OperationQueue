@@ -31,6 +31,9 @@
     return self;
 }
 
+- (void)dealloc{
+    NSLog(@"Dealloc ~ %@",self.identity);
+}
 
 - (void)start{
     if (self.isCancelled) {
@@ -54,7 +57,7 @@
         // while 保证：只有当没有执行完成和没有被取消，才执行自定义的相应操作
         while (taskIsFinished == NO && [self isCancelled] == NO){
             // 自定义的操作
-            sleep(10);  // 睡眠模拟耗时操作
+            sleep(5);  // 睡眠模拟耗时操作
             NSLog(@"currentThread = %@", [NSThread currentThread]);
             NSLog(@"identity      = %@", self.identity);
             // 这里相应的操作都已经完成，后面就是要通知KVO我们的操作完成了。

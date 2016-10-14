@@ -92,13 +92,20 @@
 //    [self.operationQueue addOperation:op14];
 
     [self.testEngine enqueueOperation:op1];
-//    [self.testEngine enqueueOperation:op2];
-//    [self.testEngine enqueueOperation:op3];
-//    [self.testEngine enqueueOperation:op4];
-//    [self.testEngine enqueueOperation:op5];
-//    [self.testEngine enqueueOperation:op6];
-//    [self.testEngine enqueueOperation:op7];
-//    [self.testEngine enqueueOperation:op8];
+    [self.testEngine enqueueOperation:op2];
+    [self.testEngine enqueueOperation:op3];
+    [self.testEngine enqueueOperation:op4];
+    [self.testEngine enqueueOperation:op5];
+    [self.testEngine enqueueOperation:op6];
+    [self.testEngine enqueueOperation:op7];
+    [self.testEngine enqueueOperation:op8];
+    
+    [self.testEngine enqueueOperation:op9];
+    [self.testEngine enqueueOperation:op10];
+    [self.testEngine enqueueOperation:op11];
+    [self.testEngine enqueueOperation:op12];
+    [self.testEngine enqueueOperation:op13];
+    [self.testEngine enqueueOperation:op14];
 
 }
 

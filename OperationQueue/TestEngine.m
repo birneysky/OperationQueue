@@ -29,7 +29,7 @@ static NSOperationQueue *_sharedNetworkQueue;
         dispatch_once(&oncePredicate, ^{
             _sharedNetworkQueue = [[NSOperationQueue alloc] init];
             [_sharedNetworkQueue addObserver:[self self] forKeyPath:@"operationCount" options:0 context:NULL];
-            [_sharedNetworkQueue setMaxConcurrentOperationCount:6];
+            [_sharedNetworkQueue setMaxConcurrentOperationCount:4];
             
         });
     }
@@ -43,16 +43,16 @@ static NSOperationQueue *_sharedNetworkQueue;
                          change:(NSDictionary *)change context:(void *)context
 {
     if (object == _sharedNetworkQueue && [keyPath isEqualToString:@"operationCount"]) {
-        
-
-//#if TARGET_OS_IPHONE
         [UIApplication sharedApplication].networkActivityIndicatorVisible =
         ([_sharedNetworkQueue.operations count] > 0);
-//#endif
     }
     else {
         [super observeValueForKeyPath:keyPath ofObject:object
                                change:change context:context];
+    }
+    
+    if(_sharedNetworkQueue.operations.count ==0){
+        NSLog(@"All operations performed.");
     }
 }
 
