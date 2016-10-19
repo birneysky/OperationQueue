@@ -7,14 +7,14 @@
 //
 
 #import "ViewController.h"
-#import "TestOperation.h"
-#import "TestEngine.h"
+#import "TENetworkOperation.h"
+#import "TENetworkEngine.h"
 
 @interface ViewController ()
 
 @property (nonatomic,strong) NSOperationQueue* operationQueue;
 
-@property (nonatomic,strong) TestEngine* testEngine;
+@property (nonatomic,strong) TENetworkEngine* testEngine;
 
 @end
 
@@ -31,10 +31,10 @@
 }
 
 
-- (TestEngine*)testEngine
+- (TENetworkEngine*)testEngine
 {
     if (!_testEngine) {
-        _testEngine = [[TestEngine alloc] init];
+        _testEngine = [[TENetworkEngine alloc] init];
     }
     return _testEngine;
 }
@@ -48,33 +48,33 @@
     //NSOperationQueue* operationQueue = [[NSOperationQueue alloc] init];
     //operationQueue.maxConcurrentOperationCount = 4;
     
-    TestOperation* op1 = [[TestOperation alloc] initWithIdentity:@"1"];
-    TestOperation* op2 = [[TestOperation alloc] initWithIdentity:@"2"];
+    TENetworkOperation* op1 = [[TENetworkOperation alloc] init];
+    TENetworkOperation* op2 = [[TENetworkOperation alloc] init];
     
     
     
-    TestOperation* op3 = [[TestOperation alloc] initWithIdentity:@"3"];
-    TestOperation* op4 = [[TestOperation alloc] initWithIdentity:@"4"];
+    TENetworkOperation* op3 = [[TENetworkOperation alloc] init];
+    TENetworkOperation* op4 = [[TENetworkOperation alloc] init];
     
     
-    TestOperation* op5 = [[TestOperation alloc] initWithIdentity:@"5"];
-    TestOperation* op6 = [[TestOperation alloc] initWithIdentity:@"6"];
+    TENetworkOperation* op5 = [[TENetworkOperation alloc] init];
+    TENetworkOperation* op6 = [[TENetworkOperation alloc] init];
     
     
-    TestOperation* op7 = [[TestOperation alloc] initWithIdentity:@"7"];
-    TestOperation* op8 = [[TestOperation alloc] initWithIdentity:@"8"];
+    TENetworkOperation* op7 = [[TENetworkOperation alloc] init];
+    TENetworkOperation* op8 = [[TENetworkOperation alloc] init];
     
     
-    TestOperation* op9 = [[TestOperation alloc] initWithIdentity:@"9"];
-    TestOperation* op10 = [[TestOperation alloc] initWithIdentity:@"10"];
+    TENetworkOperation* op9 = [[TENetworkOperation alloc] init];
+    TENetworkOperation* op10 = [[TENetworkOperation alloc] init];
     
-    
-    TestOperation* op11 = [[TestOperation alloc] initWithIdentity:@"11"];
-    TestOperation* op12 = [[TestOperation alloc] initWithIdentity:@"12"];
-    
-    
-    TestOperation* op13 = [[TestOperation alloc] initWithIdentity:@"13"];
-    TestOperation* op14 = [[TestOperation alloc] initWithIdentity:@"14"];
+//    
+//    TENetworkEngine* op11 = [[TENetworkOperation alloc] init];
+//    TENetworkEngine* op12 = [[TENetworkOperation alloc] init];
+//    
+//    
+//    TENetworkEngine* op13 = [[TENetworkOperation alloc] init];
+//    TENetworkEngine* op14 = [[TENetworkOperation alloc] init];
     
 //    [self.operationQueue addOperation:op1];
 //    [self.operationQueue addOperation:op2];
@@ -102,10 +102,10 @@
     
     [self.testEngine enqueueOperation:op9];
     [self.testEngine enqueueOperation:op10];
-    [self.testEngine enqueueOperation:op11];
-    [self.testEngine enqueueOperation:op12];
-    [self.testEngine enqueueOperation:op13];
-    [self.testEngine enqueueOperation:op14];
+//    [self.testEngine enqueueOperation:op11];
+//    [self.testEngine enqueueOperation:op12];
+//    [self.testEngine enqueueOperation:op13];
+//    [self.testEngine enqueueOperation:op14];
 
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB02A3211DB761FC0003FBFE /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB02A3201DB761FC0003FBFE /* CocoaAsyncSocket.framework */; };
 		DB05EAE91DACC0E4000F99A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB05EAE81DACC0E4000F99A5 /* main.m */; };
 		DB05EAEC1DACC0E4000F99A5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB05EAEB1DACC0E4000F99A5 /* AppDelegate.m */; };
 		DB05EAEF1DACC0E4000F99A5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB05EAEE1DACC0E4000F99A5 /* ViewController.m */; };
@@ -15,8 +16,8 @@
 		DB05EAF71DACC0E4000F99A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB05EAF51DACC0E4000F99A5 /* LaunchScreen.storyboard */; };
 		DB05EB021DACC0E4000F99A5 /* OperationQueueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB05EB011DACC0E4000F99A5 /* OperationQueueTests.m */; };
 		DB05EB0D1DACC0E4000F99A5 /* OperationQueueUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB05EB0C1DACC0E4000F99A5 /* OperationQueueUITests.m */; };
-		DB05EB1C1DACC1A2000F99A5 /* TestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB05EB1B1DACC1A2000F99A5 /* TestOperation.m */; };
-		DB649C411DACDC8E008C1B92 /* TestEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = DB649C401DACDC8E008C1B92 /* TestEngine.m */; };
+		DB05EB1C1DACC1A2000F99A5 /* TENetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB05EB1B1DACC1A2000F99A5 /* TENetworkOperation.m */; };
+		DB649C411DACDC8E008C1B92 /* TENetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = DB649C401DACDC8E008C1B92 /* TENetworkEngine.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB02A3201DB761FC0003FBFE /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = library/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		DB05EAE41DACC0E4000F99A5 /* OperationQueue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OperationQueue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB05EAE81DACC0E4000F99A5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DB05EAEA1DACC0E4000F99A5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -53,10 +55,10 @@
 		DB05EB081DACC0E4000F99A5 /* OperationQueueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OperationQueueUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB05EB0C1DACC0E4000F99A5 /* OperationQueueUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OperationQueueUITests.m; sourceTree = "<group>"; };
 		DB05EB0E1DACC0E4000F99A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DB05EB1A1DACC1A2000F99A5 /* TestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestOperation.h; sourceTree = "<group>"; };
-		DB05EB1B1DACC1A2000F99A5 /* TestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestOperation.m; sourceTree = "<group>"; };
-		DB649C3F1DACDC8E008C1B92 /* TestEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestEngine.h; sourceTree = "<group>"; };
-		DB649C401DACDC8E008C1B92 /* TestEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestEngine.m; sourceTree = "<group>"; };
+		DB05EB1A1DACC1A2000F99A5 /* TENetworkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TENetworkOperation.h; sourceTree = "<group>"; };
+		DB05EB1B1DACC1A2000F99A5 /* TENetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TENetworkOperation.m; sourceTree = "<group>"; };
+		DB649C3F1DACDC8E008C1B92 /* TENetworkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TENetworkEngine.h; sourceTree = "<group>"; };
+		DB649C401DACDC8E008C1B92 /* TENetworkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TENetworkEngine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB02A3211DB761FC0003FBFE /* CocoaAsyncSocket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB02A31F1DB761FC0003FBFE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DB02A3201DB761FC0003FBFE /* CocoaAsyncSocket.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DB05EADB1DACC0E4000F99A5 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +102,7 @@
 				DB05EB001DACC0E4000F99A5 /* OperationQueueTests */,
 				DB05EB0B1DACC0E4000F99A5 /* OperationQueueUITests */,
 				DB05EAE51DACC0E4000F99A5 /* Products */,
+				DB02A31F1DB761FC0003FBFE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,10 +119,10 @@
 		DB05EAE61DACC0E4000F99A5 /* OperationQueue */ = {
 			isa = PBXGroup;
 			children = (
-				DB649C3F1DACDC8E008C1B92 /* TestEngine.h */,
-				DB649C401DACDC8E008C1B92 /* TestEngine.m */,
-				DB05EB1A1DACC1A2000F99A5 /* TestOperation.h */,
-				DB05EB1B1DACC1A2000F99A5 /* TestOperation.m */,
+				DB649C3F1DACDC8E008C1B92 /* TENetworkEngine.h */,
+				DB649C401DACDC8E008C1B92 /* TENetworkEngine.m */,
+				DB05EB1A1DACC1A2000F99A5 /* TENetworkOperation.h */,
+				DB05EB1B1DACC1A2000F99A5 /* TENetworkOperation.m */,
 				DB05EAEA1DACC0E4000F99A5 /* AppDelegate.h */,
 				DB05EAEB1DACC0E4000F99A5 /* AppDelegate.m */,
 				DB05EAED1DACC0E4000F99A5 /* ViewController.h */,
@@ -284,11 +296,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB649C411DACDC8E008C1B92 /* TestEngine.m in Sources */,
+				DB649C411DACDC8E008C1B92 /* TENetworkEngine.m in Sources */,
 				DB05EAEF1DACC0E4000F99A5 /* ViewController.m in Sources */,
 				DB05EAEC1DACC0E4000F99A5 /* AppDelegate.m in Sources */,
 				DB05EAE91DACC0E4000F99A5 /* main.m in Sources */,
-				DB05EB1C1DACC1A2000F99A5 /* TestOperation.m in Sources */,
+				DB05EB1C1DACC1A2000F99A5 /* TENetworkOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +450,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = M7R5TQ8AQY;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/library",
+				);
 				INFOPLIST_FILE = OperationQueue/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -453,6 +470,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/library",
+				);
 				INFOPLIST_FILE = OperationQueue/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
