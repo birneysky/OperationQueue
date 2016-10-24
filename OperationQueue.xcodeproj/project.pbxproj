@@ -16,8 +16,10 @@
 		DB05EAF71DACC0E4000F99A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB05EAF51DACC0E4000F99A5 /* LaunchScreen.storyboard */; };
 		DB05EB021DACC0E4000F99A5 /* OperationQueueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB05EB011DACC0E4000F99A5 /* OperationQueueTests.m */; };
 		DB05EB0D1DACC0E4000F99A5 /* OperationQueueUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB05EB0C1DACC0E4000F99A5 /* OperationQueueUITests.m */; };
-		DB05EB1C1DACC1A2000F99A5 /* TENetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB05EB1B1DACC1A2000F99A5 /* TENetworkOperation.m */; };
-		DB649C411DACDC8E008C1B92 /* TENetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = DB649C401DACDC8E008C1B92 /* TENetworkEngine.m */; };
+		DBA733E81DBDF6BF009F5B46 /* TEReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA733E11DBDF6BF009F5B46 /* TEReachability.m */; };
+		DBA733E91DBDF6BF009F5B46 /* TENetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA733E31DBDF6BF009F5B46 /* TENetworkEngine.m */; };
+		DBA733EA1DBDF6BF009F5B46 /* TENetworkKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA733E51DBDF6BF009F5B46 /* TENetworkKit.m */; };
+		DBA733EB1DBDF6BF009F5B46 /* TENetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA733E71DBDF6BF009F5B46 /* TENetworkOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,10 +57,14 @@
 		DB05EB081DACC0E4000F99A5 /* OperationQueueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OperationQueueUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB05EB0C1DACC0E4000F99A5 /* OperationQueueUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OperationQueueUITests.m; sourceTree = "<group>"; };
 		DB05EB0E1DACC0E4000F99A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DB05EB1A1DACC1A2000F99A5 /* TENetworkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TENetworkOperation.h; sourceTree = "<group>"; };
-		DB05EB1B1DACC1A2000F99A5 /* TENetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TENetworkOperation.m; sourceTree = "<group>"; };
-		DB649C3F1DACDC8E008C1B92 /* TENetworkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TENetworkEngine.h; sourceTree = "<group>"; };
-		DB649C401DACDC8E008C1B92 /* TENetworkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TENetworkEngine.m; sourceTree = "<group>"; };
+		DBA733E01DBDF6BF009F5B46 /* TEReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEReachability.h; sourceTree = "<group>"; };
+		DBA733E11DBDF6BF009F5B46 /* TEReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEReachability.m; sourceTree = "<group>"; };
+		DBA733E21DBDF6BF009F5B46 /* TENetworkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TENetworkEngine.h; sourceTree = "<group>"; };
+		DBA733E31DBDF6BF009F5B46 /* TENetworkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TENetworkEngine.m; sourceTree = "<group>"; };
+		DBA733E41DBDF6BF009F5B46 /* TENetworkKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TENetworkKit.h; sourceTree = "<group>"; };
+		DBA733E51DBDF6BF009F5B46 /* TENetworkKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TENetworkKit.m; sourceTree = "<group>"; };
+		DBA733E61DBDF6BF009F5B46 /* TENetworkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TENetworkOperation.h; sourceTree = "<group>"; };
+		DBA733E71DBDF6BF009F5B46 /* TENetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TENetworkOperation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,10 +125,7 @@
 		DB05EAE61DACC0E4000F99A5 /* OperationQueue */ = {
 			isa = PBXGroup;
 			children = (
-				DB649C3F1DACDC8E008C1B92 /* TENetworkEngine.h */,
-				DB649C401DACDC8E008C1B92 /* TENetworkEngine.m */,
-				DB05EB1A1DACC1A2000F99A5 /* TENetworkOperation.h */,
-				DB05EB1B1DACC1A2000F99A5 /* TENetworkOperation.m */,
+				DBA733DE1DBDF6BF009F5B46 /* TENetworkKit */,
 				DB05EAEA1DACC0E4000F99A5 /* AppDelegate.h */,
 				DB05EAEB1DACC0E4000F99A5 /* AppDelegate.m */,
 				DB05EAED1DACC0E4000F99A5 /* ViewController.h */,
@@ -160,6 +163,29 @@
 				DB05EB0E1DACC0E4000F99A5 /* Info.plist */,
 			);
 			path = OperationQueueUITests;
+			sourceTree = "<group>";
+		};
+		DBA733DE1DBDF6BF009F5B46 /* TENetworkKit */ = {
+			isa = PBXGroup;
+			children = (
+				DBA733DF1DBDF6BF009F5B46 /* Reachability */,
+				DBA733E21DBDF6BF009F5B46 /* TENetworkEngine.h */,
+				DBA733E31DBDF6BF009F5B46 /* TENetworkEngine.m */,
+				DBA733E41DBDF6BF009F5B46 /* TENetworkKit.h */,
+				DBA733E51DBDF6BF009F5B46 /* TENetworkKit.m */,
+				DBA733E61DBDF6BF009F5B46 /* TENetworkOperation.h */,
+				DBA733E71DBDF6BF009F5B46 /* TENetworkOperation.m */,
+			);
+			path = TENetworkKit;
+			sourceTree = "<group>";
+		};
+		DBA733DF1DBDF6BF009F5B46 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				DBA733E01DBDF6BF009F5B46 /* TEReachability.h */,
+				DBA733E11DBDF6BF009F5B46 /* TEReachability.m */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,11 +322,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB649C411DACDC8E008C1B92 /* TENetworkEngine.m in Sources */,
+				DBA733EA1DBDF6BF009F5B46 /* TENetworkKit.m in Sources */,
 				DB05EAEF1DACC0E4000F99A5 /* ViewController.m in Sources */,
 				DB05EAEC1DACC0E4000F99A5 /* AppDelegate.m in Sources */,
+				DBA733E81DBDF6BF009F5B46 /* TEReachability.m in Sources */,
 				DB05EAE91DACC0E4000F99A5 /* main.m in Sources */,
-				DB05EB1C1DACC1A2000F99A5 /* TENetworkOperation.m in Sources */,
+				DBA733EB1DBDF6BF009F5B46 /* TENetworkOperation.m in Sources */,
+				DBA733E91DBDF6BF009F5B46 /* TENetworkEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

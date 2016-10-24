@@ -1,0 +1,321 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0013746511A1502986A1C966 /* libPods-CocoaAsyncServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D7B669953A0B237E1ED087E /* libPods-CocoaAsyncServer.a */; };
+		DBA733D21DBDB07C009F5B46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA733D11DBDB07C009F5B46 /* main.m */; };
+		DBA733DA1DBDB66D009F5B46 /* TEServer.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA733D91DBDB66D009F5B46 /* TEServer.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DBA733CC1DBDB07C009F5B46 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		76888D668F2B81D884AC4297 /* Pods-CocoaAsyncServer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaAsyncServer.release.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaAsyncServer/Pods-CocoaAsyncServer.release.xcconfig"; sourceTree = "<group>"; };
+		7D7B669953A0B237E1ED087E /* libPods-CocoaAsyncServer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CocoaAsyncServer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB54840D461D1AC91694ECDD /* Pods-CocoaAsyncServer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaAsyncServer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CocoaAsyncServer/Pods-CocoaAsyncServer.debug.xcconfig"; sourceTree = "<group>"; };
+		DBA733CE1DBDB07C009F5B46 /* CocoaAsyncServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CocoaAsyncServer; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBA733D11DBDB07C009F5B46 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DBA733D81DBDB66D009F5B46 /* TEServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEServer.h; sourceTree = "<group>"; };
+		DBA733D91DBDB66D009F5B46 /* TEServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEServer.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DBA733CB1DBDB07C009F5B46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0013746511A1502986A1C966 /* libPods-CocoaAsyncServer.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8FD6A4B19FE14E723F008D81 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AB54840D461D1AC91694ECDD /* Pods-CocoaAsyncServer.debug.xcconfig */,
+				76888D668F2B81D884AC4297 /* Pods-CocoaAsyncServer.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C1CB81D3F6EA3DC06C8B6F76 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7D7B669953A0B237E1ED087E /* libPods-CocoaAsyncServer.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DBA733C51DBDB07B009F5B46 = {
+			isa = PBXGroup;
+			children = (
+				DBA733D01DBDB07C009F5B46 /* CocoaAsyncServer */,
+				DBA733CF1DBDB07C009F5B46 /* Products */,
+				8FD6A4B19FE14E723F008D81 /* Pods */,
+				C1CB81D3F6EA3DC06C8B6F76 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		DBA733CF1DBDB07C009F5B46 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DBA733CE1DBDB07C009F5B46 /* CocoaAsyncServer */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DBA733D01DBDB07C009F5B46 /* CocoaAsyncServer */ = {
+			isa = PBXGroup;
+			children = (
+				DBA733D11DBDB07C009F5B46 /* main.m */,
+				DBA733D81DBDB66D009F5B46 /* TEServer.h */,
+				DBA733D91DBDB66D009F5B46 /* TEServer.m */,
+			);
+			path = CocoaAsyncServer;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DBA733CD1DBDB07C009F5B46 /* CocoaAsyncServer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBA733D51DBDB07C009F5B46 /* Build configuration list for PBXNativeTarget "CocoaAsyncServer" */;
+			buildPhases = (
+				20D0D8922C22264C165D93AC /* 📦 Check Pods Manifest.lock */,
+				DBA733CA1DBDB07C009F5B46 /* Sources */,
+				DBA733CB1DBDB07C009F5B46 /* Frameworks */,
+				DBA733CC1DBDB07C009F5B46 /* CopyFiles */,
+				41D76F6E369044EB4415F75C /* 📦 Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CocoaAsyncServer;
+			productName = CocoaAsyncServer;
+			productReference = DBA733CE1DBDB07C009F5B46 /* CocoaAsyncServer */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DBA733C61DBDB07B009F5B46 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = com.V2.Telescope;
+				TargetAttributes = {
+					DBA733CD1DBDB07C009F5B46 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = DBA733C91DBDB07B009F5B46 /* Build configuration list for PBXProject "CocoaAsyncServer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DBA733C51DBDB07B009F5B46;
+			productRefGroup = DBA733CF1DBDB07C009F5B46 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DBA733CD1DBDB07C009F5B46 /* CocoaAsyncServer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		20D0D8922C22264C165D93AC /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		41D76F6E369044EB4415F75C /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CocoaAsyncServer/Pods-CocoaAsyncServer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DBA733CA1DBDB07C009F5B46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBA733DA1DBDB66D009F5B46 /* TEServer.m in Sources */,
+				DBA733D21DBDB07C009F5B46 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		DBA733D31DBDB07C009F5B46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		DBA733D41DBDB07C009F5B46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		DBA733D61DBDB07C009F5B46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB54840D461D1AC91694ECDD /* Pods-CocoaAsyncServer.debug.xcconfig */;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DBA733D71DBDB07C009F5B46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76888D668F2B81D884AC4297 /* Pods-CocoaAsyncServer.release.xcconfig */;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DBA733C91DBDB07B009F5B46 /* Build configuration list for PBXProject "CocoaAsyncServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBA733D31DBDB07C009F5B46 /* Debug */,
+				DBA733D41DBDB07C009F5B46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBA733D51DBDB07C009F5B46 /* Build configuration list for PBXNativeTarget "CocoaAsyncServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBA733D61DBDB07C009F5B46 /* Debug */,
+				DBA733D71DBDB07C009F5B46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DBA733C61DBDB07B009F5B46 /* Project object */;
+}

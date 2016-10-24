@@ -12,7 +12,7 @@
 
 
 typedef NS_ENUM(NSUInteger, TECONNECTION_STATUS){
-    RUNNING,CLOSED,CONNECTING,CLOSING,FETCHING,FETCHED,
+    RUNNING,CLOSED,CONNECTING,CLOSING
 };
 
 
@@ -23,6 +23,8 @@ typedef NS_ENUM(NSUInteger, TECONNECTION_STATUS){
 
 
 - (void)enqueueOperation:(TENetworkOperation*)operation;
+
+@property (nonatomic,readonly) TECONNECTION_STATUS status;
 
 
 @end

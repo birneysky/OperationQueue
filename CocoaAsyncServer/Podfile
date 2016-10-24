@@ -1,0 +1,5 @@
+platform :osx, '10.11'
+
+target 'CocoaAsyncServer' do
+	pod 'CocoaAsyncSocket', '~>7.4.1'
+end
