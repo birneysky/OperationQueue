@@ -30,7 +30,9 @@ static NSOperationQueue *_sharedNetworkQueue;
 
 @property (nonatomic,assign) TECONNECTION_STATUS status;
 
-@property (nonatomic,weak) NSTimer* heartBeatTimer;
+@property (nonatomic,strong) NSTimer* heartBeatTimer;
+
+@property (nonatomic,strong) NSTimer* autoReconnectTimer;
 
 @property (strong, nonatomic) TEReachability *reachability;
 
@@ -99,7 +101,6 @@ static NSOperationQueue *_sharedNetworkQueue;
     if (self = [super init]) {
         self.hostName = name;
         self.port = port;
-        self.status = CLOSED;
         if (self.hostName.length > 0) {
             [[NSNotificationCenter defaultCenter] addObserver:self
                                                      selector:@selector(reachabilityChanged:)
@@ -121,7 +122,13 @@ static NSOperationQueue *_sharedNetworkQueue;
 
 - (void)enqueueOperation:(TENetworkOperation*)operation;
 {
-    [_sharedNetworkQueue addOperation:operation];
+    if (CONNECTING != self.status) {
+        [self.cacheOperations addObject:operation];
+    }
+    else{
+        [_sharedNetworkQueue addOperation:operation];
+    }
+    
 }
 
 #pragma mark - *** Helper ***
@@ -182,20 +189,59 @@ static NSOperationQueue *_sharedNetworkQueue;
     _status = status;
     if (RUNNING == status) {
         // 启动心跳定时器
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.heartBeatTimer =  [NSTimer scheduledTimerWithTimeInterval:kTENetworkKitOperationTimeOutInSeconds target:self selector:@selector(autoSendHeartbeat:) userInfo:nil repeats:YES];
-        });
-
-//        NSRunLoop *runloop = [NSRunLoop currentRunLoop];
-//        [runloop addTimer:self.heartBeatTimer forMode:NSDefaultRunLoopMode];
-//        [runloop run];
+        [self startHeartBeatTimer];
+        //取消重连定时器
+        [self cancelReconnectTimer];
+        
         // 执行缓存任务
+        __weak TENetworkEngine* weakSelf = self;
+        [self.cacheOperations enumerateObjectsUsingBlock:^(TENetworkOperation * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [weakSelf enqueueOperation:obj];
+        }];
+        
     }
     else if(CLOSED == status){
         // 取消心跳定时器
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.heartBeatTimer invalidate];
-        });
+        [self cancelHeartBeatTimer];
+        // 启动重连定时器
+        
+        [self startReconnectTimer];
+        
+
+    }
+}
+
+
+- (void) startReconnectTimer{
+    if (self.reachability.currentReachabilityStatus == NotReachable) {
+        [self.autoReconnectTimer  invalidate];
+        self.autoReconnectTimer = nil;
+        return;
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.autoReconnectTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(autoReconnect:) userInfo:nil repeats:YES];
+    });
+}
+
+- (void) startHeartBeatTimer{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.heartBeatTimer =  [NSTimer scheduledTimerWithTimeInterval:kTENetworkKitOperationTimeOutInSeconds target:self selector:@selector(autoSendHeartbeat:) userInfo:nil repeats:YES];
+
+    });
+}
+
+- (void)cancelReconnectTimer{
+    if (self.autoReconnectTimer) {
+        [self.autoReconnectTimer invalidate];
+        self.autoReconnectTimer = nil;
+    }
+}
+
+- (void)cancelHeartBeatTimer{
+    if (self.heartBeatTimer) {
+        [self.heartBeatTimer invalidate];
+        self.heartBeatTimer = nil;
     }
 }
 
@@ -203,7 +249,7 @@ static NSOperationQueue *_sharedNetworkQueue;
 
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
 {
-    NSLog(@"Connect to server successfully %@:%d",host,port);
+    NSLog(@"🌏🌏🌏🌏🌏Connect to server successfully %@:%d",host,port);
     self.status = RUNNING;
     [self.asyncSocket readDataWithTimeout:-1 tag:0];
 
@@ -238,7 +284,7 @@ static NSOperationQueue *_sharedNetworkQueue;
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(nullable NSError *)err
 {
     self.status = CLOSED;
-    NSLog(@"socketDidDisconnect %@",err);
+    NSLog(@" socketDidDisconnect %@",err);
 }
 
 - (void)socketDidCloseReadStream:(GCDAsyncSocket *)sock
@@ -261,22 +307,32 @@ static NSOperationQueue *_sharedNetworkQueue;
     uint8_t buffer[] = {0x08,0x03};
     
     [self sendData:[NSData dataWithBytes:buffer length:sizeof(buffer)] tag:kTagHeartBeat];
-    NSLog(@"send heart beat");
+    NSLog(@"☄️☄️☄️☄️☄️☄️ send heart beat");
     [self.asyncSocket readDataWithTimeout:-1 tag:0];
+}
+
+- (void)autoReconnect:(NSTimer*)timer
+{
+    NSError* error;
+    [self connectToHost:self.hostName onPort:self.port error:&error];
 }
 
 #pragma mark - *** Notification ***
 -(void) reachabilityChanged:(NSNotification*) notification
 {
-    if([self.reachability currentReachabilityStatus] == ReachableViaWiFi)
+    if([self.reachability currentReachabilityStatus] == ReachableViaWiFi ||
+       [self.reachability currentReachabilityStatus] == ReachableViaWWAN)
     {
 //        DLog(@"Server [%@] is reachable via Wifi", self.hostName);
 //        [_sharedNetworkQueue setMaxConcurrentOperationCount:6];
 //        
 //        [self checkAndRestoreFrozenOperations];
+        if (!self.autoReconnectTimer && CLOSED == self.status) {
+            [self startReconnectTimer];
+        }
     }
-    else if([self.reachability currentReachabilityStatus] == ReachableViaWWAN)
-    {
+//    else if([self.reachability currentReachabilityStatus] == ReachableViaWWAN)
+//    {
 //        if(self.wifiOnlyMode) {
 //            
 //            DLog(@" Disabling engine as server [%@] is reachable only via cellular data.", self.hostName);
@@ -286,11 +342,14 @@ static NSOperationQueue *_sharedNetworkQueue;
 //            [_sharedNetworkQueue setMaxConcurrentOperationCount:2];
 //            [self checkAndRestoreFrozenOperations];
 //        }
-    }
+//    }
     else if([self.reachability currentReachabilityStatus] == NotReachable)
     {
 //        DLog(@"Server [%@] is not reachable", self.hostName);
 //        [self freezeOperations];
+        NSLog(@"‼️‼️ Server [%@] is not reachable",self.hostName);
+//        [self cancelReconnectTimer];
+//        [self cancelHeartBeatTimer];
     }
     
 //    if(self.reachabilityChangedHandler) {
