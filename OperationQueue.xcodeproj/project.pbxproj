@@ -16,7 +16,12 @@
 		DB05EAF71DACC0E4000F99A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB05EAF51DACC0E4000F99A5 /* LaunchScreen.storyboard */; };
 		DB05EB021DACC0E4000F99A5 /* OperationQueueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB05EB011DACC0E4000F99A5 /* OperationQueueTests.m */; };
 		DB05EB0D1DACC0E4000F99A5 /* OperationQueueUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB05EB0C1DACC0E4000F99A5 /* OperationQueueUITests.m */; };
-		DBA733E81DBDF6BF009F5B46 /* TEReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA733E11DBDF6BF009F5B46 /* TEReachability.m */; };
+		DB4E1B8B1DBF500A00032B81 /* BasicPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4E1B8A1DBF500A00032B81 /* BasicPacket.m */; };
+		DB4E1B911DBF57C200032B81 /* TEReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4E1B8E1DBF57C200032B81 /* TEReachability.m */; };
+		DB4E1B921DBF57C200032B81 /* TEStreamBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4E1B901DBF57C200032B81 /* TEStreamBuffer.m */; };
+		DB4E1B961DBF5A6000032B81 /* TEJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4E1B951DBF5A6000032B81 /* TEJSONModel.m */; };
+		DB4E1B991DBF5B4E00032B81 /* UserLoginPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4E1B981DBF5B4E00032B81 /* UserLoginPacket.m */; };
+		DB4E1B9C1DBF6E6500032B81 /* TEPacketDisPatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4E1B9B1DBF6E6500032B81 /* TEPacketDisPatcher.m */; };
 		DBA733E91DBDF6BF009F5B46 /* TENetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA733E31DBDF6BF009F5B46 /* TENetworkEngine.m */; };
 		DBA733EA1DBDF6BF009F5B46 /* TENetworkKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA733E51DBDF6BF009F5B46 /* TENetworkKit.m */; };
 		DBA733EB1DBDF6BF009F5B46 /* TENetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA733E71DBDF6BF009F5B46 /* TENetworkOperation.m */; };
@@ -57,8 +62,19 @@
 		DB05EB081DACC0E4000F99A5 /* OperationQueueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OperationQueueUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB05EB0C1DACC0E4000F99A5 /* OperationQueueUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OperationQueueUITests.m; sourceTree = "<group>"; };
 		DB05EB0E1DACC0E4000F99A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DBA733E01DBDF6BF009F5B46 /* TEReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEReachability.h; sourceTree = "<group>"; };
-		DBA733E11DBDF6BF009F5B46 /* TEReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEReachability.m; sourceTree = "<group>"; };
+		DB4E1B891DBF500A00032B81 /* BasicPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicPacket.h; sourceTree = "<group>"; };
+		DB4E1B8A1DBF500A00032B81 /* BasicPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicPacket.m; sourceTree = "<group>"; };
+		DB4E1B8D1DBF57C200032B81 /* TEReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEReachability.h; sourceTree = "<group>"; };
+		DB4E1B8E1DBF57C200032B81 /* TEReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEReachability.m; sourceTree = "<group>"; };
+		DB4E1B8F1DBF57C200032B81 /* TEStreamBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEStreamBuffer.h; sourceTree = "<group>"; };
+		DB4E1B901DBF57C200032B81 /* TEStreamBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEStreamBuffer.m; sourceTree = "<group>"; };
+		DB4E1B931DBF595400032B81 /* TEPacketProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TEPacketProtocol.h; sourceTree = "<group>"; };
+		DB4E1B941DBF5A6000032B81 /* TEJSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEJSONModel.h; sourceTree = "<group>"; };
+		DB4E1B951DBF5A6000032B81 /* TEJSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEJSONModel.m; sourceTree = "<group>"; };
+		DB4E1B971DBF5B4E00032B81 /* UserLoginPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLoginPacket.h; sourceTree = "<group>"; };
+		DB4E1B981DBF5B4E00032B81 /* UserLoginPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLoginPacket.m; sourceTree = "<group>"; };
+		DB4E1B9A1DBF6E6500032B81 /* TEPacketDisPatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEPacketDisPatcher.h; sourceTree = "<group>"; };
+		DB4E1B9B1DBF6E6500032B81 /* TEPacketDisPatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEPacketDisPatcher.m; sourceTree = "<group>"; };
 		DBA733E21DBDF6BF009F5B46 /* TENetworkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TENetworkEngine.h; sourceTree = "<group>"; };
 		DBA733E31DBDF6BF009F5B46 /* TENetworkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TENetworkEngine.m; sourceTree = "<group>"; };
 		DBA733E41DBDF6BF009F5B46 /* TENetworkKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TENetworkKit.h; sourceTree = "<group>"; };
@@ -128,6 +144,12 @@
 				DBA733DE1DBDF6BF009F5B46 /* TENetworkKit */,
 				DB05EAEA1DACC0E4000F99A5 /* AppDelegate.h */,
 				DB05EAEB1DACC0E4000F99A5 /* AppDelegate.m */,
+				DB4E1B941DBF5A6000032B81 /* TEJSONModel.h */,
+				DB4E1B951DBF5A6000032B81 /* TEJSONModel.m */,
+				DB4E1B891DBF500A00032B81 /* BasicPacket.h */,
+				DB4E1B8A1DBF500A00032B81 /* BasicPacket.m */,
+				DB4E1B971DBF5B4E00032B81 /* UserLoginPacket.h */,
+				DB4E1B981DBF5B4E00032B81 /* UserLoginPacket.m */,
 				DB05EAED1DACC0E4000F99A5 /* ViewController.h */,
 				DB05EAEE1DACC0E4000F99A5 /* ViewController.m */,
 				DB05EAF01DACC0E4000F99A5 /* Main.storyboard */,
@@ -165,27 +187,32 @@
 			path = OperationQueueUITests;
 			sourceTree = "<group>";
 		};
+		DB4E1B8C1DBF57C200032B81 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				DB4E1B8D1DBF57C200032B81 /* TEReachability.h */,
+				DB4E1B8E1DBF57C200032B81 /* TEReachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		DBA733DE1DBDF6BF009F5B46 /* TENetworkKit */ = {
 			isa = PBXGroup;
 			children = (
-				DBA733DF1DBDF6BF009F5B46 /* Reachability */,
+				DB4E1B8C1DBF57C200032B81 /* Reachability */,
+				DB4E1B8F1DBF57C200032B81 /* TEStreamBuffer.h */,
+				DB4E1B901DBF57C200032B81 /* TEStreamBuffer.m */,
 				DBA733E21DBDF6BF009F5B46 /* TENetworkEngine.h */,
 				DBA733E31DBDF6BF009F5B46 /* TENetworkEngine.m */,
 				DBA733E41DBDF6BF009F5B46 /* TENetworkKit.h */,
 				DBA733E51DBDF6BF009F5B46 /* TENetworkKit.m */,
 				DBA733E61DBDF6BF009F5B46 /* TENetworkOperation.h */,
 				DBA733E71DBDF6BF009F5B46 /* TENetworkOperation.m */,
+				DB4E1B931DBF595400032B81 /* TEPacketProtocol.h */,
+				DB4E1B9A1DBF6E6500032B81 /* TEPacketDisPatcher.h */,
+				DB4E1B9B1DBF6E6500032B81 /* TEPacketDisPatcher.m */,
 			);
 			path = TENetworkKit;
-			sourceTree = "<group>";
-		};
-		DBA733DF1DBDF6BF009F5B46 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				DBA733E01DBDF6BF009F5B46 /* TEReachability.h */,
-				DBA733E11DBDF6BF009F5B46 /* TEReachability.m */,
-			);
-			path = Reachability;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,10 +350,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBA733EA1DBDF6BF009F5B46 /* TENetworkKit.m in Sources */,
+				DB4E1B8B1DBF500A00032B81 /* BasicPacket.m in Sources */,
+				DB4E1B961DBF5A6000032B81 /* TEJSONModel.m in Sources */,
+				DB4E1B9C1DBF6E6500032B81 /* TEPacketDisPatcher.m in Sources */,
+				DB4E1B911DBF57C200032B81 /* TEReachability.m in Sources */,
 				DB05EAEF1DACC0E4000F99A5 /* ViewController.m in Sources */,
+				DB4E1B921DBF57C200032B81 /* TEStreamBuffer.m in Sources */,
 				DB05EAEC1DACC0E4000F99A5 /* AppDelegate.m in Sources */,
-				DBA733E81DBDF6BF009F5B46 /* TEReachability.m in Sources */,
 				DB05EAE91DACC0E4000F99A5 /* main.m in Sources */,
+				DB4E1B991DBF5B4E00032B81 /* UserLoginPacket.m in Sources */,
 				DBA733EB1DBDF6BF009F5B46 /* TENetworkOperation.m in Sources */,
 				DBA733E91DBDF6BF009F5B46 /* TENetworkEngine.m in Sources */,
 			);

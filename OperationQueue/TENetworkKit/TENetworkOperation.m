@@ -18,8 +18,6 @@ typedef NS_ENUM(NSInteger, TENetworkOperationState) {
 
 @interface TENetworkOperation ()
 
-@property (nonatomic,copy) NSData* toBePostedData;
-
 @property (nonatomic,copy) NSData* responseData;
 
 @property (nonatomic,assign) TENetworkOperationState state;
@@ -38,11 +36,6 @@ typedef NS_ENUM(NSInteger, TENetworkOperationState) {
 {
     BOOL _executing;  // 执行中
     BOOL _finished;   // 已完成
-}
-
-- (void)setPostedData:(NSData*)data
-{
-    self.toBePostedData = data;
 }
 
 - (void)dealloc{
@@ -104,8 +97,13 @@ typedef NS_ENUM(NSInteger, TENetworkOperationState) {
         
         while (taskIsFinished == NO && [self isCancelled] == NO){
             
-            if([self.target respondsToSelector:self.executionSelector]){
-                objc_msgSend(self.target,self.executionSelector,self.toBePostedData);
+//            if([self.target respondsToSelector:self.executionSelector]){
+//                NSData* data = self.postedPacket.data;
+//                objc_msgSend(self.target,self.executionSelector,data);
+//            }
+            
+            if (self.excuteBlock) {
+                self.excuteBlock();
             }
             
             taskIsFinished = YES;

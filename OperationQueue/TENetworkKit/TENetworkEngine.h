@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TENetworkOperation.h"
-
+#import "TEPacketProtocol.h"
 
 
 typedef NS_ENUM(NSUInteger, TECONNECTION_STATUS){
@@ -19,12 +19,15 @@ typedef NS_ENUM(NSUInteger, TECONNECTION_STATUS){
 @interface TENetworkEngine : NSObject
 
 
-- (instancetype) initWithHostName:(NSString*)name port:(uint16_t)port;
-
-
-- (void)enqueueOperation:(TENetworkOperation*)operation;
-
 @property (nonatomic,readonly) TECONNECTION_STATUS status;
 
+
+- (nonnull instancetype) initWithHostName:(nonnull NSString*)name port:(uint16_t)port;
+
+
+- (void)enqueueOperation:(nonnull TENetworkOperation*)operation;
+
+
+- (nonnull TENetworkOperation*)operationWithParams:(nonnull id<TEPacketProtocol>)packet;
 
 @end

@@ -36,7 +36,9 @@
 
 
 NSString *const kTEReachabilityChangedNotification = @"kReachabilityChangedNotification";
+NSString* const kTENetworkChangedNotification = @"kNetworkChangedNotification";
 
+#define kNotifySCNetworkChange "com.apple.system.config.network_change"
 
 @interface TEReachability ()
 
@@ -80,6 +82,19 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     @autoreleasepool 
     {
         [reachability reachabilityChanged:flags];
+    }
+}
+
+static void onNotifyCallback(CFNotificationCenterRef center,
+                             void *observer,
+                             CFStringRef name,
+                             const void *object,
+                             CFDictionaryRef userInfo) {
+    if (CFStringCompare(name, CFSTR(kNotifySCNetworkChange), kCFCompareCaseInsensitive) == kCFCompareEqualTo) {
+        //TODO when wifi changed
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:kTENetworkChangedNotification object:nil];
+        });
     }
 }
 
@@ -185,6 +200,14 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 
 -(BOOL)startNotifier
 {
+    
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(),
+                                    NULL,
+                                    &onNotifyCallback,
+                                    CFSTR(kNotifySCNetworkChange),
+                                    NULL,
+                                    CFNotificationSuspensionBehaviorDeliverImmediately);
+    
     // allow start notifier to be called multiple times
     if(self.reachabilityObject && (self.reachabilityObject == self))
     {
@@ -224,11 +247,20 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 
     // if we get here we fail at the internet
     self.reachabilityObject = nil;
+    
+    
+    
+    
+    
     return NO;
 }
 
 -(void)stopNotifier
 {
+    CFNotificationCenterRemoveObserver(CFNotificationCenterGetDarwinNotifyCenter(),
+                                       NULL,
+                                       CFSTR(kNotifySCNetworkChange),
+                                       NULL);
     // First stop, any callbacks!
     SCNetworkReachabilitySetCallback(self.reachabilityRef, NULL, NULL);
     

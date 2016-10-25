@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TEPacketProtocol.h"
 
 @class TENetworkOperation;
 
@@ -26,7 +27,7 @@ typedef void (^TENKExecutionBlock)();
 
 @property (nonatomic,copy) TENKExecutionBlock excuteBlock;
 
-- (void)setPostedData:(NSData*)data;
+@property (nonatomic,strong) id<TEPacketProtocol> postedPacket;
 
 
 - (void)setTarget:(id)target executionSelector:(SEL)selector;

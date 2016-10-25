@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 #import <CocoaAsyncSocket/CocoaAsyncSocket.h>
 #import "TEReachability.h"
+#import "TEStreamBuffer.h"
+#import "TEPacketDisPatcher.h"
 
 
 #define kTENetworkKitOperationTimeOutInSeconds 5
@@ -37,6 +39,10 @@ static NSOperationQueue *_sharedNetworkQueue;
 @property (strong, nonatomic) TEReachability *reachability;
 
 @property (nonatomic, strong) NSMutableArray<TENetworkOperation*>* cacheOperations;
+
+@property (nonatomic,strong) TEStreamBuffer* streamBuffer;
+
+@property (nonatomic,strong) TEPacketDisPatcher* packetDipatcher;
 
 @end
 
@@ -95,8 +101,25 @@ static NSOperationQueue *_sharedNetworkQueue;
     return _cacheOperations;
 }
 
+- (TEStreamBuffer*)streamBuffer
+{
+    if (!_streamBuffer) {
+        _streamBuffer = [[TEStreamBuffer alloc] init];
+        _streamBuffer.delegate = self.packetDipatcher;
+    }
+    return _streamBuffer;
+}
+
+
+- (TEPacketDisPatcher*) packetDipatcher{
+    if (!_packetDipatcher) {
+        _packetDipatcher = [[TEPacketDisPatcher alloc] init];
+    }
+    return _packetDipatcher;
+}
+
 #pragma mark - *** Api ***
-- (instancetype) initWithHostName:(NSString*)name port:(uint16_t)port
+- (nonnull instancetype) initWithHostName:(nonnull NSString*)name port:(uint16_t)port;
 {
     if (self = [super init]) {
         self.hostName = name;
@@ -105,6 +128,11 @@ static NSOperationQueue *_sharedNetworkQueue;
             [[NSNotificationCenter defaultCenter] addObserver:self
                                                      selector:@selector(reachabilityChanged:)
                                                          name:kTEReachabilityChangedNotification
+                                                       object:nil];
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(networkChanged:)
+                                                         name:kTENetworkChangedNotification
                                                        object:nil];
             self.reachability = [TEReachability reachabilityWithHostname:self.hostName];
             [self.reachability startNotifier];
@@ -118,17 +146,33 @@ static NSOperationQueue *_sharedNetworkQueue;
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kTEReachabilityChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kTENetworkChangedNotification object:nil];
 }
 
 - (void)enqueueOperation:(TENetworkOperation*)operation;
 {
-    if (CONNECTING != self.status) {
+    if (RUNNING != self.status) {
         [self.cacheOperations addObject:operation];
     }
     else{
         [_sharedNetworkQueue addOperation:operation];
     }
     
+}
+
+
+- (TENetworkOperation*)operationWithParams:(id<TEPacketProtocol>)packet
+{
+    TENetworkOperation* op = [[TENetworkOperation alloc] init];
+    NSString* seqId = [NSString stringWithFormat:@"%p",op];
+    [packet setSequenceNum:seqId];
+    [op setTarget:self executionSelector:@selector(sendData:)];
+    __weak TENetworkEngine* weakSelf = self;
+    [op setExcuteBlock:^{
+        [weakSelf sendData:packet.data];
+    }];
+    op.postedPacket = packet;
+    return op;
 }
 
 #pragma mark - *** Helper ***
@@ -142,6 +186,7 @@ static NSOperationQueue *_sharedNetworkQueue;
         NSLog(@"connect error %@",error);
     }
 }
+
 
 - (void) sendData:(NSData *)data
 {
@@ -170,9 +215,9 @@ static NSOperationQueue *_sharedNetworkQueue;
 - (BOOL)connectToHost:(NSString*)host onPort:(uint16_t)port error:(NSError **)errPtr
 {
     //return [self.asyncSocket connectToHost:host onPort:port error:errPtr];
-    NSLog(@"connectToHost-----begin");
+    NSLog(@"🚩🚩🚩🚩connectToHost-----begin");
     BOOL res = [self.asyncSocket connectToHost:host onPort:port withTimeout:kTENetworkKitOperationTimeOutInSeconds error:errPtr];
-    NSLog(@"connectToHost-----end");
+    NSLog(@"🚩🚩🚩🚩connectToHost-----end");
     return res;
 }
 
@@ -220,7 +265,7 @@ static NSOperationQueue *_sharedNetworkQueue;
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.autoReconnectTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(autoReconnect:) userInfo:nil repeats:YES];
+        self.autoReconnectTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(autoReconnect:) userInfo:nil repeats:NO];
     });
 }
 
@@ -257,7 +302,9 @@ static NSOperationQueue *_sharedNetworkQueue;
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
 {
-    NSLog(@"didReadDataTag %ld  %@,length %ld",tag,data,(long)data.length);
+    NSLog(@"📲📲📲📲📲📲 didReadDataTag %ld  %@,length %ld",tag,data,(long)data.length);
+    
+     [self.streamBuffer appendData:data];
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didWritePartialDataOfLength:(NSUInteger)partialLength tag:(long)tag
@@ -327,6 +374,7 @@ static NSOperationQueue *_sharedNetworkQueue;
 //        [_sharedNetworkQueue setMaxConcurrentOperationCount:6];
 //        
 //        [self checkAndRestoreFrozenOperations];
+        NSLog(@"🌊🌊🌊🌊🌊🌊");
         if (!self.autoReconnectTimer && CLOSED == self.status) {
             [self startReconnectTimer];
         }
@@ -348,12 +396,18 @@ static NSOperationQueue *_sharedNetworkQueue;
 //        DLog(@"Server [%@] is not reachable", self.hostName);
 //        [self freezeOperations];
         NSLog(@"‼️‼️ Server [%@] is not reachable",self.hostName);
-//        [self cancelReconnectTimer];
-//        [self cancelHeartBeatTimer];
     }
     
 //    if(self.reachabilityChangedHandler) {
 //        self.reachabilityChangedHandler([self.reachability currentReachabilityStatus]);
 //    }
 }
+
+- (void)networkChanged:(NSNotification*)notification
+{
+    [self.asyncSocket disconnect];
+    NSLog(@"♨️♨️♨️♨️♨️♨️♨️");
+}
+
+
 @end

@@ -39,6 +39,7 @@
 #endif
 
 extern NSString *const kTEReachabilityChangedNotification;
+extern NSString *const kTENetworkChangedNotification;
 
 typedef NS_ENUM(NSInteger, NetworkStatus) {
     // Apple NetworkStatus Compatible Names.

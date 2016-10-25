@@ -8,6 +8,7 @@
 
 #import "TENetworkKit.h"
 #import "TENetworkEngine.h"
+#import "UserLoginPacket.h"
 
 static TENetworkKit* defaultKit;
 
@@ -54,7 +55,15 @@ static TENetworkKit* defaultKit;
 }
 
 
-- (void) loginWithAccountNum:(NSString*)anum password:(NSString*)pwd{
+- (void) loginWithAccountNum:(NSString*)anum password:(NSString*)pwd
+{
+    UserLoginPacket* packet = [[UserLoginPacket alloc] init];
+    packet.userName = anum;
+    packet.pwd = pwd;
+    
+    TENetworkOperation* op = [self.networkEngine operationWithParams:packet];
+
+    [self.networkEngine enqueueOperation:op];
 }
 
 @end

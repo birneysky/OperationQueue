@@ -114,9 +114,10 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - *** Target Action ***
+
+- (IBAction)loginAction:(id)sender {
+    [[TENetworkKit defaultNetKit] loginWithAccountNum:@"23" password:@"34"];
 }
 
 
