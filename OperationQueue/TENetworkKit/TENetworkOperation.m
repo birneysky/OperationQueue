@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, TENetworkOperationState) {
 
 @interface TENetworkOperation ()
 
-@property (nonatomic,copy) NSData* responseData;
+@property (nonatomic,copy) NSDictionary* responseData;
 
 @property (nonatomic,assign) TENetworkOperationState state;
 
@@ -36,10 +36,12 @@ typedef NS_ENUM(NSInteger, TENetworkOperationState) {
 {
     BOOL _executing;  // 执行中
     BOOL _finished;   // 已完成
+    BOOL _canceled; //已取消
 }
 
 - (void)dealloc{
-    NSLog(@"TENetworkOperation ~ %@",self);
+    static long count = 0;
+    NSLog(@"♻️♻️♻️♻️ TENetworkOperation ~ %@ %ld",self,count++);
 }
 
 - (void)setTarget:(id)target executionSelector:(SEL)selector
@@ -59,17 +61,17 @@ typedef NS_ENUM(NSInteger, TENetworkOperationState) {
 {
     if (self.errorBlock) {
         self.errorBlock(error);
-        [self completeOperation];
     }
+    [self completeOperation];
 }
 
-- (void)operationSucceeded:(NSData*)data
+- (void)operationSucceeded:(NSDictionary*)data
 {
     self.responseData = data;
     if (self.completedBlock) {
         self.completedBlock(self);
-        [self completeOperation];
     }
+    [self completeOperation];
 }
 
 #pragma mark - *** Override ***
@@ -109,6 +111,10 @@ typedef NS_ENUM(NSInteger, TENetworkOperationState) {
             taskIsFinished = YES;
         }
         
+        if ([self isCancelled]) {
+            [self operationFailedWithError:nil];
+        }
+        
     }
     @catch (NSException * e) {
         NSLog(@"Exception %@", e);
@@ -118,13 +124,12 @@ typedef NS_ENUM(NSInteger, TENetworkOperationState) {
 
 
 - (void)completeOperation {
-    [self willChangeValueForKey:@"isFinished"];
     [self willChangeValueForKey:@"isExecuting"];
-    
     _executing = NO;
-    _finished = YES;
-    
     [self didChangeValueForKey:@"isExecuting"];
+    
+    [self willChangeValueForKey:@"isFinished"];
+    _finished = YES;
     [self didChangeValueForKey:@"isFinished"];
 }
 
@@ -141,9 +146,15 @@ typedef NS_ENUM(NSInteger, TENetworkOperationState) {
     return _finished;
 }
 
-- (void)cancel
-{
-    
+- (BOOL)isCancelled{
+    return _canceled;
+}
+
+- (void)cancel{
+    [self willChangeValueForKey:@"isCancelled"];
+    _canceled = NO;
+    [self didChangeValueForKey:@"isCancelled"];
+    [super cancel];
 }
 
 @end

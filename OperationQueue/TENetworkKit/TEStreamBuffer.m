@@ -82,7 +82,7 @@
 - (void)processPacket{
     __weak TEStreamBuffer* weakSelf = self;
 
-    NSLog(@"recv stream %@ len %ld",weakSelf.streamData,(long)weakSelf.streamData.length);
+   // NSLog(@"recv stream %@ len %ld",weakSelf.streamData,(long)weakSelf.streamData.length);
         NSInteger readOffset = 0;
         NSInteger streamDataLength = weakSelf.streamData.length;
         int8_t* streamBuffer = weakSelf.streamData.mutableBytes;
@@ -105,7 +105,7 @@
                     [self.delegate didParsePacket:response];
                 }
                 else{
-                    NSLog(@"❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️");
+                    //NSLog(@"❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️");
                 }
 
 //                NSLog(@"object %@ len %ld",data,(long)data.length);

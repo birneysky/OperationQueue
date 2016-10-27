@@ -80,7 +80,7 @@ static NSOperationQueue *_sharedNetworkQueue;
     }
     
     if(_sharedNetworkQueue.operations.count ==0){
-        NSLog(@"All operations performed.");
+        NSLog(@"All operations performed completely.");
     }
 }
 
@@ -215,9 +215,7 @@ static NSOperationQueue *_sharedNetworkQueue;
 - (BOOL)connectToHost:(NSString*)host onPort:(uint16_t)port error:(NSError **)errPtr
 {
     //return [self.asyncSocket connectToHost:host onPort:port error:errPtr];
-    NSLog(@"🚩🚩🚩🚩connectToHost-----begin");
     BOOL res = [self.asyncSocket connectToHost:host onPort:port withTimeout:kTENetworkKitOperationTimeOutInSeconds error:errPtr];
-    NSLog(@"🚩🚩🚩🚩connectToHost-----end");
     return res;
 }
 
@@ -243,6 +241,8 @@ static NSOperationQueue *_sharedNetworkQueue;
         [self.cacheOperations enumerateObjectsUsingBlock:^(TENetworkOperation * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [weakSelf enqueueOperation:obj];
         }];
+        
+        [self.cacheOperations removeAllObjects];
         
     }
     else if(CLOSED == status){
@@ -294,7 +294,7 @@ static NSOperationQueue *_sharedNetworkQueue;
 
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
 {
-    NSLog(@"🌏🌏🌏🌏🌏Connect to server successfully %@:%d",host,port);
+    NSLog(@"📱🔗🖥  Connect to server successfully %@:%d",host,port);
     self.status = RUNNING;
     [self.asyncSocket readDataWithTimeout:-1 tag:0];
 
@@ -302,8 +302,7 @@ static NSOperationQueue *_sharedNetworkQueue;
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
 {
-    NSLog(@"📲📲📲📲📲📲 didReadDataTag %ld  %@,length %ld",tag,data,(long)data.length);
-    
+    //NSLog(@"📲📲📲📲📲📲 didReadDataTag %ld  %@,length %ld",tag,data,(long)data.length);
      [self.streamBuffer appendData:data];
 }
 
@@ -315,7 +314,7 @@ static NSOperationQueue *_sharedNetworkQueue;
 
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag
 {
-    NSLog(@"didWriteDataWithTag:%ld",tag);
+    //NSLog(@"didWriteDataWithTag:%ld",tag);
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didReceiveTrust:(SecTrustRef)trust completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler
@@ -331,7 +330,7 @@ static NSOperationQueue *_sharedNetworkQueue;
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(nullable NSError *)err
 {
     self.status = CLOSED;
-    NSLog(@" socketDidDisconnect %@",err);
+    NSLog(@"🚫🔗🚫🔗 socketDidDisconnect %@",err);
 }
 
 - (void)socketDidCloseReadStream:(GCDAsyncSocket *)sock
@@ -354,7 +353,7 @@ static NSOperationQueue *_sharedNetworkQueue;
     uint8_t buffer[] = {0x08,0x03};
     
     [self sendData:[NSData dataWithBytes:buffer length:sizeof(buffer)] tag:kTagHeartBeat];
-    NSLog(@"☄️☄️☄️☄️☄️☄️ send heart beat");
+    //NSLog(@"☄️☄️☄️☄️☄️☄️ send heart beat");
     [self.asyncSocket readDataWithTimeout:-1 tag:0];
 }
 
@@ -374,7 +373,6 @@ static NSOperationQueue *_sharedNetworkQueue;
 //        [_sharedNetworkQueue setMaxConcurrentOperationCount:6];
 //        
 //        [self checkAndRestoreFrozenOperations];
-        NSLog(@"🌊🌊🌊🌊🌊🌊");
         if (!self.autoReconnectTimer && CLOSED == self.status) {
             [self startReconnectTimer];
         }
@@ -395,7 +393,7 @@ static NSOperationQueue *_sharedNetworkQueue;
     {
 //        DLog(@"Server [%@] is not reachable", self.hostName);
 //        [self freezeOperations];
-        NSLog(@"‼️‼️ Server [%@] is not reachable",self.hostName);
+        NSLog(@"🌍🚷🌎🚷🌏 Server [%@] is not reachable",self.hostName);
     }
     
 //    if(self.reachabilityChangedHandler) {
@@ -406,7 +404,6 @@ static NSOperationQueue *_sharedNetworkQueue;
 - (void)networkChanged:(NSNotification*)notification
 {
     [self.asyncSocket disconnect];
-    NSLog(@"♨️♨️♨️♨️♨️♨️♨️");
 }
 
 

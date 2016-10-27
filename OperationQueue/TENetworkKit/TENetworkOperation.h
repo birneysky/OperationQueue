@@ -21,7 +21,7 @@ typedef void (^TENKExecutionBlock)();
 
 @property (nonatomic,copy,readonly) TENKErrorBlock errorBlock;
 
-@property (nonatomic,copy,readonly) NSData* responseData;
+@property (nonatomic,copy,readonly) NSDictionary* responseData;
 
 @property (copy, nonatomic) NSString* certificate;
 
@@ -39,6 +39,6 @@ typedef void (^TENKExecutionBlock)();
 - (void)operationFailedWithError:(NSError*) error;
 
 
-- (void)operationSucceeded:(NSData*)data;
+- (void)operationSucceeded:(NSDictionary*)data;
 
 @end
